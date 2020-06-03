@@ -21,8 +21,8 @@ class LetterGrid extends React.Component {
             let columns = [];
             for (let j=0; j<columnCount; j++) {
                 columns.push(
-                    <Grid.Column width={6}>
-                        <Button content={this.props.letters[i][j]}/>
+                    <Grid.Column>
+                        <Button fluid content={this.props.letters[i][j]}/>
                     </Grid.Column>
                 );
             }
@@ -33,7 +33,6 @@ class LetterGrid extends React.Component {
             );
         }
 
-        console.log(this.props.letters);
         return (
             <Grid celled="internally" rows={rowCount}>
                 {rows}

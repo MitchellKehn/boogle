@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import LetterGrid from "./components/LetterGrid";
-import { Container, Grid } from "semantic-ui-react";
+import { Container, Grid, Segment, Header } from "semantic-ui-react";
 import SearchBar from "./components/SearchBar";
 import WordList from "./components/WordList";
 
@@ -31,22 +31,25 @@ function App() {
   return (
     <div className="App">
         <Container>
-            <Grid centered celled>
-                <Grid.Row columns={2}>
-                    <Grid.Column width={4}>
-                        <SearchBar />
-                    </Grid.Column>
-                    <Grid.Column/>
-                </Grid.Row>
-                <Grid.Row columns={2}>
-                    <Grid.Column width={4}>
-                        <LetterGrid letters={letters} />
-                    </Grid.Column>
-                    <Grid.Column width={2}>
-                        <WordList words={wordList} />
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+            <Segment>
+                <Header as="h1">Boogle!</Header>
+                <Grid columns={2} stackable>
+                    <Grid.Row>
+                        <Grid.Column>
+                            <SearchBar />
+                        </Grid.Column>
+                        <Grid.Column/>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column>
+                            <LetterGrid letters={letters} />
+                        </Grid.Column>
+                        <Grid.Column width={4}>
+                            <WordList words={wordList} />
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            </Segment>
         </Container>
     </div>
   );

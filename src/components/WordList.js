@@ -1,15 +1,16 @@
 import React from "react";
+import { List } from "semantic-ui-react";
 
 class WordList extends React.Component {
     render() {
         return (
-            <table className="ui selectable celled table" style={{"overflow-y": "scroll", maxHeight: 2}}>
-                <tbody>
-                    {this.props.words.map(word =>
-                        <tr><td>{word}</td></tr>
-                    )}
-                </tbody>
-            </table>
+            <List celled selection verticalAlign='middle' style={{height: "auto", maxHeight: "250px", overflowY: "scroll"}}>
+                {this.props.words.map(word =>
+                    <List.Item>
+                        <List.Content floated='left'>{word}</List.Content>
+                    </List.Item>
+                )}
+            </List>
         )
     }
 }

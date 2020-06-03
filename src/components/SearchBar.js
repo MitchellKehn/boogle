@@ -10,7 +10,7 @@ import { Input } from "semantic-ui-react";
 class SearchBar extends React.Component {
     render() {
         return (
-            <Input placeholder='Search...' />
+            <Input fluid placeholder='Search...' />
         );
     }
 }
