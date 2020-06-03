@@ -1,6 +1,15 @@
 import React from "react";
 import { Grid, Button } from "semantic-ui-react";
 
+/**
+ * Displays the boggle board.
+ *
+ * Can accept a list of input coordinates to show
+ * the tiles that correspond to the current valid word input.
+ *
+ * Clicking on tiles adds those letters to the text field, lets the user
+ * trace out their word.
+ */
 class LetterGrid extends React.Component {
     render() {
         let rowCount = this.props.letters.length;
@@ -12,13 +21,13 @@ class LetterGrid extends React.Component {
             let columns = [];
             for (let j=0; j<columnCount; j++) {
                 columns.push(
-                    <Grid.Column>
+                    <Grid.Column width={6}>
                         <Button content={this.props.letters[i][j]}/>
                     </Grid.Column>
                 );
             }
             rows.push(
-                <Grid.Row>
+                <Grid.Row columns={columnCount}>
                     {columns}
                 </Grid.Row>
             );
@@ -26,7 +35,7 @@ class LetterGrid extends React.Component {
 
         console.log(this.props.letters);
         return (
-            <Grid celled>
+            <Grid celled="internally" rows={rowCount}>
                 {rows}
             </Grid>
         );
