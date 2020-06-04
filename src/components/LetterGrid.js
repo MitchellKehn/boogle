@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Button } from "semantic-ui-react";
+import {containsSubarray} from "../logic/arrayUtils";
 
 /**
  * Displays the boggle board.
@@ -20,9 +21,12 @@ class LetterGrid extends React.Component {
         for (let i=0; i<rowCount; i++) {
             let columns = [];
             for (let j=0; j<columnCount; j++) {
+                let isActive = containsSubarray(this.props.solvePath, [i, j]);
+                let color = isActive ? "blue" : "";
+                
                 columns.push(
                     <Grid.Column>
-                        <Button fluid content={this.props.letters[i][j]}/>
+                        <Button fluid color={color} content={this.props.letters[i][j]}/>
                     </Grid.Column>
                 );
             }
