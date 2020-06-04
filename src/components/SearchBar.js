@@ -9,7 +9,6 @@ import { Input } from "semantic-ui-react";
  */
 class SearchBar extends React.Component {
     render() {
-        console.log(this.props.isValid);
         return (
             <Input fluid
                    error={!this.props.isValid}

@@ -50,7 +50,7 @@ function getDiceSet() {
  * @param width
  * @param height
  */
-function generateGameBoard(width, height) {
+export function generateGameBoard(width, height) {
     const gameBoard = [];
 
     let dice = [];

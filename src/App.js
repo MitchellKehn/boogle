@@ -5,6 +5,7 @@ import {Button, Container, Form, Grid, Header, Icon, Segment} from "semantic-ui-
 import SearchBar from "./components/SearchBar";
 import WordList from "./components/WordList";
 import {solve} from "./logic/solver";
+import {generateGameBoard} from "./logic/generator";
 
 const letters = [
     ["A", "B", "C", "D"],
@@ -28,9 +29,25 @@ class App extends React.Component {
         }
 
         this.isValid = this.isValid.bind(this);
+        this.resetGame = this.resetGame.bind(this);
         this.addLetter = this.addLetter.bind(this);
         this.handleWordUpdate = this.handleWordUpdate.bind(this);
         this.handleSearchFormSubmit = this.handleSearchFormSubmit.bind(this);
+    }
+
+    resetGame() {
+        this.setState({
+            word: "",
+
+            grid: generateGameBoard(4, 4),
+            solvePath: null,
+
+            wordList: []
+        });
+    }
+
+    componentDidMount() {
+        this.resetGame();
     }
 
     handleWordUpdate(word) {
@@ -83,7 +100,7 @@ class App extends React.Component {
                                     />
                                     <Button.Group floated="right">
                                         <Button primary onClick={this.handleSearchFormSubmit}><Icon name="sign-in"/></Button>
-                                        <Button primary><Icon name="refresh"/></Button>
+                                        <Button primary onClick={this.resetGame}><Icon name="refresh"/></Button>
                                         <Button secondary><Icon name="calculator"/></Button>
                                     </Button.Group>
                                 </Grid.Column>
