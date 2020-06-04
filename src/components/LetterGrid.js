@@ -22,7 +22,7 @@ class LetterGrid extends React.Component {
             let columns = [];
             for (let j=0; j<columnCount; j++) {
                 let isActive = containsSubarray(this.props.solvePath, [i, j]);
-                let color = isActive ? "blue" : "";
+                let color = isActive ? "blue" : null;
 
                 columns.push(
                     <Grid.Column>

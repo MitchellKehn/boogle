@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import LetterGrid from "./components/LetterGrid";
-import { Container, Grid, Segment, Header, Button, Icon } from "semantic-ui-react";
+import {Button, Container, Form, Grid, Header, Icon, Segment} from "semantic-ui-react";
 import SearchBar from "./components/SearchBar";
 import WordList from "./components/WordList";
 import {solve} from "./logic/solver";
@@ -13,12 +13,6 @@ const letters = [
     ["M", "N", "O", "P"],
 ]
 
-const wordList = [
-    "danger",
-    "duck",
-    "matte",
-    "colon",
-]
 
 class App extends React.Component {
     constructor(props) {
@@ -30,10 +24,12 @@ class App extends React.Component {
             grid: letters,
             solvePath: null,
 
-            wordList: wordList
+            wordList: []
         }
 
+        this.isValid = this.isValid.bind(this);
         this.handleWordUpdate = this.handleWordUpdate.bind(this);
+        this.handleSearchFormSubmit = this.handleSearchFormSubmit.bind(this);
     }
 
     handleWordUpdate(word) {
@@ -42,6 +38,21 @@ class App extends React.Component {
             word: word,
             solvePath: solvePath,
         });
+    }
+
+    handleSearchFormSubmit() {
+        if (!this.isValid()) {
+            return;
+        }
+        this.setState({
+            wordList: [...this.state.wordList, this.state.word],
+            solvePath: null,
+            word: "",
+        })
+    }
+
+    isValid() {
+        return this.state.solvePath !== null || this.state.word.length === 0;
     }
 
     render() {
@@ -53,7 +64,9 @@ class App extends React.Component {
                         <Grid columns={2} stackable>
                             <Grid.Row>
                                 <Grid.Column>
-                                    <SearchBar isValid={this.state.solvePath !== null || this.state.word.length === 0} onUpdate={(word) => this.handleWordUpdate(word)}/>
+                                    <Form onSubmit={this.handleSearchFormSubmit}>
+                                        <SearchBar word={this.state.word} isValid={this.isValid()} onUpdate={(word) => this.handleWordUpdate(word)}/>
+                                    </Form>
                                 </Grid.Column>
                                 <Grid.Column/>
                             </Grid.Row>

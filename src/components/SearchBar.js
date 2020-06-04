@@ -9,8 +9,13 @@ import { Input } from "semantic-ui-react";
  */
 class SearchBar extends React.Component {
     render() {
+        console.log(this.props.isValid);
         return (
-            <Input fluid error={!this.props.isValid} placeholder='Search...' onChange={(event) => this.props.onUpdate(event.target.value)}/>
+            <Input fluid
+                   error={!this.props.isValid}
+                   placeholder='Search...'
+                   onChange={(event) => this.props.onUpdate(event.target.value)}
+                   value={this.props.word}/>
         );
     }
 }
