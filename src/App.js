@@ -82,6 +82,7 @@ class App extends React.Component {
                                                 addLetter={this.addLetter}
                                     />
                                     <Button.Group floated="right">
+                                        <Button primary onClick={this.handleSearchFormSubmit}><Icon name="sign-in"/></Button>
                                         <Button primary><Icon name="refresh"/></Button>
                                         <Button secondary><Icon name="calculator"/></Button>
                                     </Button.Group>
