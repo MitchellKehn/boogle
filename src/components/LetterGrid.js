@@ -24,9 +24,14 @@ class LetterGrid extends React.Component {
                 let isActive = containsSubarray(this.props.solvePath, [i, j]);
                 let color = isActive ? "blue" : null;
 
+                let letter = this.props.letters[i][j]
                 columns.push(
                     <Grid.Column>
-                        <Button fluid color={color} content={this.props.letters[i][j]}/>
+                        <Button fluid
+                                color={color}
+                                content={letter}
+                                onClick={() => this.props.addLetter(letter)}
+                        />
                     </Grid.Column>
                 );
             }

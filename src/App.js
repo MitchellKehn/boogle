@@ -10,7 +10,7 @@ const letters = [
     ["A", "B", "C", "D"],
     ["E", "F", "G", "H"],
     ["I", "J", "K", "L"],
-    ["M", "N", "O", "P"],
+    ["M", "N", "O", "Qu"],
 ]
 
 
@@ -28,6 +28,7 @@ class App extends React.Component {
         }
 
         this.isValid = this.isValid.bind(this);
+        this.addLetter = this.addLetter.bind(this);
         this.handleWordUpdate = this.handleWordUpdate.bind(this);
         this.handleSearchFormSubmit = this.handleSearchFormSubmit.bind(this);
     }
@@ -55,6 +56,10 @@ class App extends React.Component {
         return this.state.solvePath !== null || this.state.word.length === 0;
     }
 
+    addLetter(letter) {
+        this.handleWordUpdate(this.state.word + letter.toLowerCase());
+    }
+
     render() {
         return (
             <div className="App">
@@ -72,7 +77,10 @@ class App extends React.Component {
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column>
-                                    <LetterGrid letters={this.state.grid} solvePath={this.state.solvePath}/>
+                                    <LetterGrid letters={this.state.grid}
+                                                solvePath={this.state.solvePath}
+                                                addLetter={this.addLetter}
+                                    />
                                     <Button.Group floated="right">
                                         <Button primary><Icon name="refresh"/></Button>
                                         <Button secondary><Icon name="calculator"/></Button>

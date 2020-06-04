@@ -52,7 +52,7 @@ export function solve(word, letterGrid) {
     let currentCell = null;
     let visitedCells = [];
 
-    return solveStep(word, currentCell, visitedCells, letterGrid, rowCount, columnCount);
+    return solveStep(word.toUpperCase(), currentCell, visitedCells, letterGrid, rowCount, columnCount);
 }
 
 function solveStep(word, currentCell, visitedCells, letterGrid, rowCount, columnCount) {
@@ -66,7 +66,7 @@ function solveStep(word, currentCell, visitedCells, letterGrid, rowCount, column
             continue;
         }
 
-        let availableLetter = letterGrid[cell[0]][cell[1]];
+        let availableLetter = letterGrid[cell[0]][cell[1]].toUpperCase();
 
         // this is a step in the right direction, advance to next letter
         if (word.startsWith(availableLetter)) {
