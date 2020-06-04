@@ -16,7 +16,7 @@ class WordList extends React.Component {
                                 </List.Item>
                            }
                             >
-                        <WordDefinition word="Semantic"/>
+                        <WordDefinition word={word}/>
                     </Popup>
                 )}
             </List>
