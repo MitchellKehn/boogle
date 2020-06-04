@@ -37,7 +37,6 @@ class App extends React.Component {
     }
 
     handleWordUpdate(word) {
-        console.log("handling new word! " + word);
         let solvePath = solve(word, this.state.grid);
         this.setState({
             word: word,
@@ -54,7 +53,7 @@ class App extends React.Component {
                         <Grid columns={2} stackable>
                             <Grid.Row>
                                 <Grid.Column>
-                                    <SearchBar onUpdate={(word) => this.handleWordUpdate(word)}/>
+                                    <SearchBar isValid={this.state.solvePath !== null || this.state.word.length === 0} onUpdate={(word) => this.handleWordUpdate(word)}/>
                                 </Grid.Column>
                                 <Grid.Column/>
                             </Grid.Row>
