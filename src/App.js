@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import LetterGrid from "./components/LetterGrid";
-import { Container, Grid, Segment, Header } from "semantic-ui-react";
+import { Container, Grid, Segment, Header, Button, Icon } from "semantic-ui-react";
 import SearchBar from "./components/SearchBar";
 import WordList from "./components/WordList";
 
@@ -13,14 +13,6 @@ const letters = [
 ]
 
 const wordList = [
-    "danger",
-    "duck",
-    "matte",
-    "colon",
-    "danger",
-    "duck",
-    "matte",
-    "colon",
     "danger",
     "duck",
     "matte",
@@ -43,6 +35,10 @@ function App() {
                     <Grid.Row>
                         <Grid.Column>
                             <LetterGrid letters={letters} />
+                            <Button.Group floated="right">
+                                <Button primary><Icon name="refresh"/></Button>
+                                <Button secondary><Icon name="calculator"/></Button>
+                            </Button.Group>
                         </Grid.Column>
                         <Grid.Column width={4}>
                             <WordList words={wordList} />
