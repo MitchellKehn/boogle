@@ -99,9 +99,9 @@ class App extends React.Component {
                                                 addLetter={this.addLetter}
                                     />
                                     <Button.Group floated="right">
-                                        <Button primary onClick={this.handleSearchFormSubmit}><Icon name="sign-in"/></Button>
-                                        <Button primary onClick={this.resetGame}><Icon name="refresh"/></Button>
-                                        <Button secondary><Icon name="calculator"/></Button>
+                                        <Button icon color="green" onClick={this.handleSearchFormSubmit}><Icon name="sign-in"/></Button>
+                                        <Button icon primary onClick={this.resetGame}><Icon name="refresh"/></Button>
+                                        <Button icon secondary><Icon name="calculator"/></Button>
                                     </Button.Group>
                                 </Grid.Column>
                                 <Grid.Column width={4}>
