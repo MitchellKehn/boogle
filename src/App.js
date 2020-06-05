@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import LetterGrid from "./components/LetterGrid";
-import {Button, Container, Form, Grid, Header, Icon, Segment, Ref} from "semantic-ui-react";
+import {Button, Container, Form, Grid, Header, Icon, Segment} from "semantic-ui-react";
 import SearchBar from "./components/SearchBar";
 import WordList from "./components/WordList";
 import {solve} from "./logic/solver";
@@ -50,7 +50,7 @@ class App extends React.Component {
             grid: generateGameBoard(4, 4),
             solvePath: null,
 
-            wordList: []
+            wordList: ["test"]
         });
     }
 

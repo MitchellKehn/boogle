@@ -1,6 +1,7 @@
 import React from "react";
 import { List, Popup } from "semantic-ui-react";
 import WordDefinition from "./WordDefinition";
+import { debounce } from "lodash";
 
 class WordList extends React.Component {
     render() {
@@ -11,14 +12,15 @@ class WordList extends React.Component {
                   celled
                   selection
                   relaxed
-                  size="mega"
+                  size="huge"
                   verticalAlign='middle'
                   style={{height: "auto", maxHeight: "250px", overflowY: "scroll"}}
             >
                 {this.props.words.map(word =>
                     <Popup wide
                            on="click"
-                           position="bottom left"
+                           position="bottom"
+                           hideArrow
                            onOpen={() => this.props.onPreview(word)}
                            onClose={this.props.onPreviewClose}
                            trigger={
@@ -28,8 +30,14 @@ class WordList extends React.Component {
                                     </List.Content>
                                 </List.Item>
                            }
-                            >
+                           style={{
+                               maxHeight: 350,
+                               overflowY: "scroll",
+                           }}
+                    >
+                    <Popup.Content>
                         <WordDefinition word={word}/>
+                    </Popup.Content>
                     </Popup>
                 )}
             </List>
