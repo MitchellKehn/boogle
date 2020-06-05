@@ -7,12 +7,22 @@ class WordList extends React.Component {
         const onItemClick = (text) => console.log(text);
 
         return (
-            <List animated celled selection relaxed verticalAlign='middle' style={{height: "auto", maxHeight: "250px", overflowY: "scroll"}}>
+            <List animated
+                  celled
+                  selection
+                  relaxed
+                  size="mega"
+                  verticalAlign='middle'
+                  style={{height: "auto", maxHeight: "250px", overflowY: "scroll"}}
+            >
                 {this.props.words.map(word =>
                     <Popup on="click"
+                           position="bottom left"
                            trigger={
                                 <List.Item onClick={() => onItemClick(word)}>
-                                    <List.Content floated='left'>{word}</List.Content>
+                                    <List.Content floated='left'>
+                                        <List.Header>{word}</List.Header>
+                                    </List.Content>
                                 </List.Item>
                            }
                             >

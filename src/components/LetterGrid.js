@@ -28,6 +28,7 @@ class LetterGrid extends React.Component {
                 columns.push(
                     <Grid.Column>
                         <Button fluid
+                                size="massive"
                                 color={color}
                                 content={letter}
                                 onClick={() => this.props.addLetter(letter)}
