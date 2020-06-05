@@ -134,9 +134,9 @@ class App extends React.Component {
                                     </Grid.Row>
                                     <Grid.Row>
                                         <Button.Group floated="right">
-                                            <Button icon color="green" onClick={this.handleSearchFormSubmit}><Icon name="sign-in"/></Button>
-                                            <Button icon primary onClick={this.resetGame}><Icon name="refresh"/></Button>
-                                            <Button icon secondary><Icon name="calculator"/></Button>
+                                            <Button icon size="large" color="green" onClick={this.handleSearchFormSubmit}><Icon name="sign-in"/></Button>
+                                            <Button icon size="large" primary onClick={this.resetGame}><Icon name="refresh"/></Button>
+                                            <Button icon disabled size="large" secondary><Icon name="calculator"/></Button>
                                         </Button.Group>
                                     </Grid.Row>
                                 </Grid.Column>
