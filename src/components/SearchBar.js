@@ -21,6 +21,7 @@ class SearchBar extends React.Component {
     render() {
         return (
             <Input fluid
+                   size="huge"
                    error={!this.props.isValid}
                    placeholder='Search...'
                    onChange={(event) => this.props.onUpdate(event.target.value)}

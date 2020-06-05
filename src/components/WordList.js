@@ -19,8 +19,7 @@ class WordList extends React.Component {
                 {this.props.words.map(word =>
                     <Popup wide
                            on="click"
-                           position="bottom"
-                           hideArrow
+                           position="bottom right"
                            onOpen={() => this.props.onPreview(word)}
                            onClose={this.props.onPreviewClose}
                            trigger={

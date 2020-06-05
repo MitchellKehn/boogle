@@ -6,6 +6,7 @@ import SearchBar from "./components/SearchBar";
 import WordList from "./components/WordList";
 import {solve} from "./logic/solver";
 import {generateGameBoard} from "./logic/generator";
+import Scoreboard from "./components/Scoreboard";
 
 const letters = [
     ["A", "B", "C", "D"],
@@ -50,7 +51,7 @@ class App extends React.Component {
             grid: generateGameBoard(4, 4),
             solvePath: null,
 
-            wordList: ["test"]
+            wordList: []
         });
     }
 
@@ -107,9 +108,9 @@ class App extends React.Component {
             <div className="App">
                 <Container>
                     <Segment>
-                        <Header as="h1">Boogle!</Header>
+                        <Header as="h1" size="huge">Boogle!</Header>
                         <Grid columns={2} stackable>
-                            <Grid.Row>
+                            <Grid.Row centered verticalAlign="middle">
                                 <Grid.Column>
                                     <Form onSubmit={this.handleSearchFormSubmit}>
                                         <SearchBar word={this.state.word}
@@ -119,21 +120,28 @@ class App extends React.Component {
                                         />
                                     </Form>
                                 </Grid.Column>
-                                <Grid.Column/>
+                                <Grid.Column>
+                                    <Scoreboard wordList={this.state.wordList}/>
+                                </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column>
-                                    <LetterGrid letters={this.state.grid}
-                                                solvePath={this.state.solvePath}
-                                                addLetter={this.addLetter}
-                                    />
-                                    <Button.Group floated="right">
-                                        <Button icon color="green" onClick={this.handleSearchFormSubmit}><Icon name="sign-in"/></Button>
-                                        <Button icon primary onClick={this.resetGame}><Icon name="refresh"/></Button>
-                                        <Button icon secondary><Icon name="calculator"/></Button>
-                                    </Button.Group>
+                                    <Grid.Row>
+                                        <LetterGrid letters={this.state.grid}
+                                                    solvePath={this.state.solvePath}
+                                                    addLetter={this.addLetter}
+                                        />
+                                    </Grid.Row>
+                                    <Grid.Row>
+                                        <Button.Group floated="right">
+                                            <Button icon color="green" onClick={this.handleSearchFormSubmit}><Icon name="sign-in"/></Button>
+                                            <Button icon primary onClick={this.resetGame}><Icon name="refresh"/></Button>
+                                            <Button icon secondary><Icon name="calculator"/></Button>
+                                        </Button.Group>
+                                    </Grid.Row>
                                 </Grid.Column>
-                                <Grid.Column width={4}>
+
+                                <Grid.Column >
                                     <WordList words={this.state.wordList}
                                               onPreview={this.handleWordPreview}
                                               onPreviewClose={this.handleWordPreviewClose}
