@@ -18,8 +18,10 @@ class WordList extends React.Component {
                 {this.props.words.map(word =>
                     <Popup on="click"
                            position="bottom left"
+                           onOpen={() => this.props.onPreview(word)}
+                           onClose={this.props.onPreviewClose}
                            trigger={
-                                <List.Item onClick={() => onItemClick(word)}>
+                                <List.Item>
                                     <List.Content floated='left'>
                                         <List.Header>{word}</List.Header>
                                     </List.Content>

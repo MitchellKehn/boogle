@@ -25,14 +25,20 @@ class App extends React.Component {
             grid: letters,
             solvePath: null,
 
-            wordList: []
+            wordList: [],
+
+            inputIsDisabled: false,
         }
 
         this.isValid = this.isValid.bind(this);
         this.resetGame = this.resetGame.bind(this);
         this.addLetter = this.addLetter.bind(this);
+
         this.handleWordUpdate = this.handleWordUpdate.bind(this);
         this.handleSearchFormSubmit = this.handleSearchFormSubmit.bind(this);
+
+        this.handleWordPreview = this.handleWordPreview.bind(this);
+        this.handleWordPreviewClose = this.handleWordPreviewClose.bind(this);
 
         this.searchFieldRef = React.createRef();
     }
@@ -72,6 +78,20 @@ class App extends React.Component {
             solvePath: null,
             word: "",
         })
+        this.searchFieldRef.current.focus();
+    }
+
+    /**
+     * Preview the path of the highlighted word in the word list in the game board
+     */
+    handleWordPreview(word) {
+        this.lastInput = this.state.word;
+        this.handleWordUpdate(word);
+        this.setState({inputIsDisabled: true})
+    }
+
+    handleWordPreviewClose() {
+        this.handleWordUpdate(this.lastInput);
     }
 
     isValid() {
@@ -114,7 +134,10 @@ class App extends React.Component {
                                     </Button.Group>
                                 </Grid.Column>
                                 <Grid.Column width={4}>
-                                    <WordList words={this.state.wordList} />
+                                    <WordList words={this.state.wordList}
+                                              onPreview={this.handleWordPreview}
+                                              onPreviewClose={this.handleWordPreviewClose}
+                                    />
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
