@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import LetterGrid from "./components/LetterGrid";
-import {Button, Container, Form, Grid, Header, Icon, Segment} from "semantic-ui-react";
+import {Button, Container, Form, Grid, Header, Icon, Segment, Ref} from "semantic-ui-react";
 import SearchBar from "./components/SearchBar";
 import WordList from "./components/WordList";
 import {solve} from "./logic/solver";
@@ -33,6 +33,8 @@ class App extends React.Component {
         this.addLetter = this.addLetter.bind(this);
         this.handleWordUpdate = this.handleWordUpdate.bind(this);
         this.handleSearchFormSubmit = this.handleSearchFormSubmit.bind(this);
+
+        this.searchFieldRef = React.createRef();
     }
 
     resetGame() {
@@ -48,6 +50,7 @@ class App extends React.Component {
 
     componentDidMount() {
         this.resetGame();
+        this.searchFieldRef.current.focus();
     }
 
     handleWordUpdate(word) {
@@ -56,6 +59,8 @@ class App extends React.Component {
             word: word,
             solvePath: solvePath,
         });
+
+        this.searchFieldRef.current.focus();
     }
 
     handleSearchFormSubmit() {
@@ -87,7 +92,11 @@ class App extends React.Component {
                             <Grid.Row>
                                 <Grid.Column>
                                     <Form onSubmit={this.handleSearchFormSubmit}>
-                                        <SearchBar word={this.state.word} isValid={this.isValid()} onUpdate={(word) => this.handleWordUpdate(word)}/>
+                                        <SearchBar word={this.state.word}
+                                                   isValid={this.isValid()}
+                                                   onUpdate={(word) => this.handleWordUpdate(word)}
+                                                   ref={this.searchFieldRef}
+                                        />
                                     </Form>
                                 </Grid.Column>
                                 <Grid.Column/>
