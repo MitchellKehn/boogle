@@ -16,7 +16,8 @@ class WordList extends React.Component {
                   style={{height: "auto", maxHeight: "250px", overflowY: "scroll"}}
             >
                 {this.props.words.map(word =>
-                    <Popup on="click"
+                    <Popup wide
+                           on="click"
                            position="bottom left"
                            onOpen={() => this.props.onPreview(word)}
                            onClose={this.props.onPreviewClose}
