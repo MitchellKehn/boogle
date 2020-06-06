@@ -14,7 +14,7 @@ class WordList extends React.Component {
                   relaxed
                   size="huge"
                   verticalAlign='middle'
-                  style={{height: "auto", maxHeight: "250px", overflowY: "scroll"}}
+                  style={{height: "auto", overflowY: "scroll"}}
             >
                 {this.props.words.map(word =>
                     <Popup wide
