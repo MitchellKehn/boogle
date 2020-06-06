@@ -50,3 +50,21 @@ export function containsSubarray(array, subarray) {
     }
     return false;
 }
+
+
+/**
+ * Return a random element chosen from an array
+ * @param array
+ * @param pop if the element should be removed from the array, or just returned.
+ * @return an element from the array
+ */
+export function randomChoice(array, pop=false) {
+    const index = Math.floor(Math.random() * array.length);
+    const randomElement = array[index];
+
+    if (pop) {
+        array.splice(index, 1);
+    }
+
+    return randomElement;
+}

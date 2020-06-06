@@ -1,5 +1,6 @@
 import React from "react";
-import {Dropdown, Button} from "semantic-ui-react";
+import {Dropdown, Button, Dimmer, Header, Icon} from "semantic-ui-react";
+import {randomChoice} from "../logic/arrayUtils";
 
 
 function formatSeconds(sec_num) {
@@ -12,7 +13,42 @@ function formatSeconds(sec_num) {
     return `${minutes}:${seconds}`;
 }
 
+const timeoutMessages = [
+    "Time's up!",
+    "That's all, folks!",
+    "Pencils down!",
+    "Quit it!",
+    "CEASE!",
+]
+
+const timeoutSubMessages = [
+    "Better luck next time.",
+    "Oi oi, no cheating!",
+    "Don't make me come over there!",
+    "Yes that does mean you, Helen.",
+    "You should have quit while you were ahead.",
+    "I'd offer you commiserations, but even that may be giving you a bit too much credit.",
+    "Persistence is futile."
+]
+
+const timeoutIcons = [
+    "hand spock outline",
+    "eye",
+    "bomb",
+    "fire",
+    "heart outline",
+    "lightbulb outline",
+    "camera",
+    "stopwatch",
+    "pencil",
+]
+
 const timerOptions = [
+    // {
+    //     key: 0,
+    //     text: "3 seconds",
+    //     value: 3,
+    // },
     {
         key: 0,
         text: "30 seconds",
@@ -44,6 +80,11 @@ export default class CountdownTimer extends React.Component {
             duration: timerOptions[2].value,
             stopTime: null,
             displayText: "",
+
+            isDimmerActive: false,
+            dimmerText: "",
+            dimmerMessage: "",
+            dimmerIcon: "",
         }
 
         this.timerId = null;
@@ -79,9 +120,12 @@ export default class CountdownTimer extends React.Component {
 
     onTimerFinish() {
         this.stopTimer();
-        if (this.props.onFinish !== undefined) {
-            this.props.onFinish()
-        }
+        this.setState({
+            isDimmerActive: true,
+            dimmerText: randomChoice(timeoutMessages),
+            dimmerMessage: randomChoice(timeoutSubMessages),
+            dimmerIcon: randomChoice(timeoutIcons),
+        })
     }
 
     stopTimer() {
@@ -100,8 +144,10 @@ export default class CountdownTimer extends React.Component {
     }
 
     render() {
+        let content;
+
         if (!this.state.isActive) {
-            return (
+            content = (
                 <span>
                     Set timer for{" "}
                     <Dropdown inline
@@ -119,7 +165,7 @@ export default class CountdownTimer extends React.Component {
             )
         }
         else {
-            return (
+            content = (
                 <span>
                     <Button icon="times"
                             label={{style: {fontSize: 20}, as: "span", content: this.state.displayText}}
@@ -130,6 +176,18 @@ export default class CountdownTimer extends React.Component {
                 </span>
             )
         }
+
+        return [
+            content,
+            <Dimmer active={this.state.isDimmerActive}
+                    page
+                    onClickOutside={()=>this.setState({isDimmerActive: false})}
+            >
+                <Icon name={this.state.dimmerIcon} size='massive' />
+                <Header as="h1" inverted>{this.state.dimmerText}</Header>
+                <span>{this.state.dimmerMessage}</span>
+            </Dimmer>
+        ]
     }
 }
 
