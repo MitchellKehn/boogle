@@ -8,6 +8,7 @@ import {solve} from "./logic/solver";
 import {generateGameBoard} from "./logic/generator";
 import Scoreboard from "./components/Scoreboard";
 import {Word} from "./logic/game";
+import CountdownTimer from "./components/CountdownTimer";
 
 const letters = [
     ["A", "B", "C", "D"],
@@ -120,7 +121,9 @@ class App extends React.Component {
                 <Container>
                     <Segment>
                         <Header as="h1" size="huge">Boogle!</Header>
+
                         <Grid columns={2} stackable>
+                            <CountdownTimer />
                             <Grid.Row centered verticalAlign="middle">
                                 <Grid.Column>
                                     <Form onSubmit={this.handleSearchFormSubmit}>
