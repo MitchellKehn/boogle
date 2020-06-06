@@ -4,11 +4,14 @@ import {getScore} from "../logic/game";
 
 class Scoreboard extends React.Component {
     render() {
-        const wordCount = this.props.wordList.length;
-
+        let wordCount = 0;
         let score = 0;
+
         for (const word of this.props.wordList) {
-            score += getScore(word);
+            if (word.enabled) {
+                wordCount++;
+                score += getScore(word.text);
+            }
         }
 
         return (

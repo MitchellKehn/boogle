@@ -7,6 +7,7 @@ import WordList from "./components/WordList";
 import {solve} from "./logic/solver";
 import {generateGameBoard} from "./logic/generator";
 import Scoreboard from "./components/Scoreboard";
+import {Word} from "./logic/game";
 
 const letters = [
     ["A", "B", "C", "D"],
@@ -41,6 +42,7 @@ class App extends React.Component {
         this.handleWordPreview = this.handleWordPreview.bind(this);
         this.handleWordPreviewClose = this.handleWordPreviewClose.bind(this);
 
+        this.onWordEnabledChange = this.onWordEnabledChange.bind(this);
         this.searchFieldRef = React.createRef();
     }
 
@@ -75,7 +77,7 @@ class App extends React.Component {
             return;
         }
         this.setState({
-            wordList: [...this.state.wordList, this.state.word],
+            wordList: [...this.state.wordList, new Word(this.state.word)],
             solvePath: null,
             word: "",
         })
@@ -101,6 +103,15 @@ class App extends React.Component {
 
     addLetter(letter) {
         this.handleWordUpdate(this.state.word + letter.toLowerCase());
+    }
+
+    /**
+     * I'm pretty sure this is not good practice, but can't think of a better way.
+     */
+    onWordEnabledChange() {
+        this.setState({
+            wordList: this.state.wordList,
+        })
     }
 
     render() {
@@ -145,6 +156,7 @@ class App extends React.Component {
                                     <WordList words={this.state.wordList}
                                               onPreview={this.handleWordPreview}
                                               onPreviewClose={this.handleWordPreviewClose}
+                                              onEnabledToggle={this.onWordEnabledChange}
                                     />
                                 </Grid.Column>
                             </Grid.Row>
