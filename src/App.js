@@ -120,47 +120,65 @@ class App extends React.Component {
             <div className="App">
                 <Container>
                     <Segment>
-                        <Header as="h1" size="huge">Boogle!</Header>
-
-                        <Grid columns={2} stackable>
-                            <CountdownTimer />
-                            <Grid.Row centered verticalAlign="middle">
+                        <Grid divided>
+                            <Grid.Row>
                                 <Grid.Column>
-                                    <Form onSubmit={this.handleSearchFormSubmit}>
-                                        <SearchBar word={this.state.word}
-                                                   isValid={this.isValid()}
-                                                   onUpdate={(word) => this.handleWordUpdate(word)}
-                                                   ref={this.searchFieldRef}
-                                        />
-                                    </Form>
-                                </Grid.Column>
-                                <Grid.Column>
-                                    <Scoreboard wordList={this.state.wordList}/>
+                                    <Header as="h1" size="huge">Boogle!</Header>
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
-                                <Grid.Column>
-                                    <Grid.Row>
-                                        <LetterGrid letters={this.state.grid}
-                                                    solvePath={this.state.solvePath}
-                                                    addLetter={this.addLetter}
-                                        />
-                                    </Grid.Row>
-                                    <Grid.Row>
-                                        <Button.Group floated="right">
-                                            <Button icon size="large" color="green" onClick={this.handleSearchFormSubmit}><Icon name="sign-in"/></Button>
-                                            <Button icon size="large" primary onClick={this.resetGame}><Icon name="refresh"/></Button>
-                                            <Button icon disabled size="large" secondary><Icon name="calculator"/></Button>
-                                        </Button.Group>
-                                    </Grid.Row>
+                                <Grid.Column width={10}>
+                                    <Grid>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <Form onSubmit={this.handleSearchFormSubmit}>
+                                                    <SearchBar word={this.state.word}
+                                                               isValid={this.isValid()}
+                                                               onUpdate={(word) => this.handleWordUpdate(word)}
+                                                               ref={this.searchFieldRef}
+                                                    />
+                                                </Form>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <LetterGrid letters={this.state.grid}
+                                                            solvePath={this.state.solvePath}
+                                                            addLetter={this.addLetter}
+                                                />
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <Button.Group floated="right">
+                                                    <Button icon size="large" color="green" onClick={this.handleSearchFormSubmit}><Icon name="sign-in"/></Button>
+                                                    <Button icon size="large" primary onClick={this.resetGame}><Icon name="refresh"/></Button>
+                                                    <Button icon disabled size="large" secondary><Icon name="calculator"/></Button>
+                                                </Button.Group>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                    </Grid>
                                 </Grid.Column>
-
-                                <Grid.Column >
-                                    <WordList words={this.state.wordList}
-                                              onPreview={this.handleWordPreview}
-                                              onPreviewClose={this.handleWordPreviewClose}
-                                              onEnabledToggle={this.onWordEnabledChange}
-                                    />
+                                <Grid.Column width={6}>
+                                    <Grid verticalAlign='middle'>
+                                        <Grid.Row columns={2}>
+                                            <Grid.Column>
+                                                <Scoreboard wordList={this.state.wordList}/>
+                                            </Grid.Column>
+                                            <Grid.Column>
+                                                <CountdownTimer />
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <WordList words={this.state.wordList}
+                                                          onPreview={this.handleWordPreview}
+                                                          onPreviewClose={this.handleWordPreviewClose}
+                                                          onEnabledToggle={this.onWordEnabledChange}
+                                                />
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                    </Grid>
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
