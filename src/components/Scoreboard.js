@@ -15,7 +15,7 @@ class Scoreboard extends React.Component {
         }
 
         return (
-            <Statistic.Group widths="four">
+            <Statistic.Group widths="two">
                 <Statistic label={"Word"+(wordCount!==1?"s":"")} value={wordCount} />
                 <Statistic label={"Point"+(score!==1?"s":"")} value={score} />
             </Statistic.Group>
