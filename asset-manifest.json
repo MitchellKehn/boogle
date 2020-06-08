@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/boogle/static/css/main.050523cc.chunk.css",
+    "main.js": "/boogle/static/js/main.2e6cabff.chunk.js",
+    "main.js.map": "/boogle/static/js/main.2e6cabff.chunk.js.map",
+    "runtime-main.js": "/boogle/static/js/runtime-main.89010e31.js",
+    "runtime-main.js.map": "/boogle/static/js/runtime-main.89010e31.js.map",
+    "static/js/2.51de7286.chunk.js": "/boogle/static/js/2.51de7286.chunk.js",
+    "static/js/2.51de7286.chunk.js.map": "/boogle/static/js/2.51de7286.chunk.js.map",
+    "index.html": "/boogle/index.html",
+    "precache-manifest.6929936de7307705c9ad64460513edc6.js": "/boogle/precache-manifest.6929936de7307705c9ad64460513edc6.js",
+    "service-worker.js": "/boogle/service-worker.js",
+    "static/css/main.050523cc.chunk.css.map": "/boogle/static/css/main.050523cc.chunk.css.map",
+    "static/js/2.51de7286.chunk.js.LICENSE.txt": "/boogle/static/js/2.51de7286.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.89010e31.js",
+    "static/js/2.51de7286.chunk.js",
+    "static/css/main.050523cc.chunk.css",
+    "static/js/main.2e6cabff.chunk.js"
+  ]
+}
