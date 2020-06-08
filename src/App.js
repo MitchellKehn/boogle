@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import LetterGrid from "./components/LetterGrid";
-import {Button, Container, Form, Grid, Header, Icon, Segment} from "semantic-ui-react";
+import {Button, Container, Form, Grid, Header, Icon, Segment, Item} from "semantic-ui-react";
 import SearchBar from "./components/SearchBar";
 import WordList from "./components/WordList";
 import {solve} from "./logic/solver";
@@ -127,7 +127,9 @@ class App extends React.Component {
                         <Grid divided stackable>
                             <Grid.Row>
                                 <Grid.Column>
-                                    <Header as="h1" size="huge">Boogle!</Header>
+                                    <Item link as="a" href={"https://github.com/MitchellKehn/boogle"}>
+                                        <Header as="h1" size="huge">Boogle!</Header>
+                                    </Item>
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
