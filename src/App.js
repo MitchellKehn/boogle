@@ -68,6 +68,7 @@ class App extends React.Component {
     }
 
     handleWordUpdate(word) {
+
         let solvePath = solve(word, this.state.grid);
         this.setState({
             word: word,
@@ -78,9 +79,8 @@ class App extends React.Component {
     }
 
     handleSearchFormSubmit() {
-        if (!this.isValid()) {
-            return;
-        }
+        if (!this.state.word) { return; }
+        if (!this.isValid()) { return; }
         this.setState({
             wordList: [...this.state.wordList, new Word(this.state.word)],
             solvePath: null,
