@@ -10,6 +10,8 @@ import Scoreboard from "./components/Scoreboard";
 import {Word} from "./logic/game";
 import CountdownTimer from "./components/CountdownTimer";
 
+import { isBrowser, isMobile } from "react-device-detect";
+
 const letters = [
     ["A", "B", "C", "D"],
     ["E", "F", "G", "H"],
@@ -37,6 +39,8 @@ class App extends React.Component {
         this.resetGame = this.resetGame.bind(this);
         this.addLetter = this.addLetter.bind(this);
 
+        this.focusSearchField = this.focusSearchField.bind(this);
+
         this.handleWordUpdate = this.handleWordUpdate.bind(this);
         this.handleSearchFormSubmit = this.handleSearchFormSubmit.bind(this);
 
@@ -60,7 +64,7 @@ class App extends React.Component {
 
     componentDidMount() {
         this.resetGame();
-        this.searchFieldRef.current.focus();
+        this.focusSearchField(true);
     }
 
     handleWordUpdate(word) {
@@ -70,7 +74,7 @@ class App extends React.Component {
             solvePath: solvePath,
         });
 
-        this.searchFieldRef.current.focus();
+        this.focusSearchField();
     }
 
     handleSearchFormSubmit() {
@@ -82,7 +86,7 @@ class App extends React.Component {
             solvePath: null,
             word: "",
         })
-        this.searchFieldRef.current.focus();
+        this.focusSearchField();
     }
 
     /**
@@ -120,7 +124,7 @@ class App extends React.Component {
             <div className="App">
                 <Container>
                     <Segment>
-                        <Grid divided>
+                        <Grid divided stackable>
                             <Grid.Row>
                                 <Grid.Column>
                                     <Header as="h1" size="huge">Boogle!</Header>
@@ -186,6 +190,12 @@ class App extends React.Component {
                 </Container>
             </div>
         );
+    }
+
+    focusSearchField(force=false) {
+        if (isBrowser || force) {
+            this.searchFieldRef.current.focus();
+        }
     }
 }
 

@@ -2,6 +2,8 @@ import React from "react";
 import { Grid, Button } from "semantic-ui-react";
 import {containsSubarray} from "../logic/arrayUtils";
 
+import { isBrowser, isMobile } from "react-device-detect";
+
 /**
  * Displays the boggle board.
  *
@@ -28,7 +30,7 @@ class LetterGrid extends React.Component {
                 columns.push(
                     <Grid.Column>
                         <Button fluid
-                                size="massive"
+                                size={isMobile ? "medium" : "massive"}
                                 color={color}
                                 content={letter}
                                 onClick={() => this.props.addLetter(letter)}
